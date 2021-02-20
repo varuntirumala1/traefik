@@ -1,2 +1,2 @@
-sh -c /usr/share/argo-tunnel.sh
+/bin/bash -c /usr/share/argo-tunnel.sh
 /traefik
