@@ -20,7 +20,8 @@ RUN apk add --no-cache \
    && tarball="$(find . -name "*linux_amd64.tar.gz")" \
    && tar -xzf $tarball \
    && chmod +x traefik \
-   && mv traefik /
+   && mv traefik / \
+   && rm $tarball
    
 COPY script/ca-certificates.crt /etc/ssl/certs/
 EXPOSE 80
