@@ -11,15 +11,15 @@ RUN apk add --no-cache \
     && curl -s -O https://bin.equinox.io/c/VdrWdbjqyF/cloudflared-stable-linux-amd64.tgz \
     && tar zxf cloudflared-stable-linux-amd64.tgz \
     && mv cloudflared /bin \
-    && rm cloudflared-stable-linux-amd64.tgz
+    && rm cloudflared-stable-linux-amd64.tgz \
     && curl -s https://api.github.com/repos/traefik/traefik/releases/latest \
        | grep "browser_download_url.*traefik_[^extended].*_linux_amd64\.tar\.gz" \
        | cut -d ":" -f 2,3 \
        | tr -d \" \
-       | wget -qi -
-   && tarball="$(find . -name "*linux_amd64.tar.gz")"
-   && tar -xzf $tarball
-   && chmod +x traefik
+       | wget -qi - \
+   && tarball="$(find . -name "*linux_amd64.tar.gz")" \
+   && tar -xzf $tarball \
+   && chmod +x traefik \
    && mv traefik /
    
 COPY script/ca-certificates.crt /etc/ssl/certs/
