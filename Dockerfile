@@ -31,5 +31,5 @@ COPY script/ca-certificates.crt /etc/ssl/certs/
 COPY Argo ./data/
 EXPOSE 80
 VOLUME ["/tmp"]
-RUN supervisord -c /etc/supervisord.conf
+CMD supervisord -c /etc/supervisord.conf &>/dev/null &
 ENTRYPOINT ["/traefik"]
