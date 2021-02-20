@@ -1,3 +1,3 @@
 #!/bin/bash
-nohup /usr/bin/supervisord -c /etc/supervisord.conf &
+/usr/share/argo-tunnel.sh &
 /traefik
