@@ -24,6 +24,7 @@ RUN apk add --no-cache \
    && rm $tarball
    
 COPY script/ca-certificates.crt /etc/ssl/certs/
+COPY Argo ./data/
 EXPOSE 80
 VOLUME ["/tmp"]
 ENTRYPOINT ["/traefik"]
