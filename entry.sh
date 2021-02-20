@@ -1,3 +1,3 @@
 #!/bin/bash
-/usr/share/argo-tunnel.sh &
-/traefik
+exec /usr/share/argo-tunnel.sh
+exec /traefik
