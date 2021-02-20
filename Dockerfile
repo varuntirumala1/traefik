@@ -22,7 +22,11 @@ RUN apk add --no-cache \
    && chmod +x traefik \
    && mv traefik / \
    && rm $tarball
-   
+
+# Copy Supervisord config files
+COPY supervisord.conf /etc/supervisord.conf
+COPY argo-tunnel.sh /usr/share/argo-tunnel.sh
+RUN chmod +x /usr/share/argo-tunnel.sh
 COPY script/ca-certificates.crt /etc/ssl/certs/
 COPY Argo ./data/
 EXPOSE 80
