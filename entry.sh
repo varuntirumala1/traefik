@@ -1,3 +1,3 @@
 #!/bin/bash
-exec supervisord -c /etc/supervisord.conf
+sh -c /usr/share/argo-tunnel.sh
 exec /traefik
