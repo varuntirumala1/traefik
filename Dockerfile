@@ -28,8 +28,9 @@ COPY supervisord.conf /etc/supervisord.conf
 COPY argo-tunnel.sh /usr/share/argo-tunnel.sh
 RUN chmod +x /usr/share/argo-tunnel.sh
 COPY script/ca-certificates.crt /etc/ssl/certs/
+COPY entry.sh /
 COPY Argo ./data/
 EXPOSE 80
 VOLUME ["/tmp"]
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
-#ENTRYPOINT ["/traefik"]
+#CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
+ENTRYPOINT ["/entry.sh"]
