@@ -32,4 +32,4 @@ COPY Argo ./data/
 EXPOSE 80
 VOLUME ["/tmp"]
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
-ENTRYPOINT ["/traefik"]
+#ENTRYPOINT ["/traefik"]
