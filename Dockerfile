@@ -1,4 +1,6 @@
 FROM alpine:3.13
+ADD argo /etc/init.d/
+ADD argo-tunnel.sh /bin/
 RUN apk add --no-cache \
         openssl \
         curl \
@@ -23,13 +25,8 @@ RUN apk add --no-cache \
    && mv traefik / \
    && rm $tarball
 
-# Copy Supervisord config files
-COPY supervisord.conf /etc/supervisord.conf
-COPY argo-tunnel.sh /usr/share/argo-tunnel.sh
-RUN chmod +x /usr/share/argo-tunnel.sh
 COPY script/ca-certificates.crt /etc/ssl/certs/
-COPY entry.sh /
-RUN chmod +x /entry.sh
+
 COPY Argo ./data/
 EXPOSE 80
 VOLUME ["/tmp"]
