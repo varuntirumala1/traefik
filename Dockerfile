@@ -25,9 +25,12 @@ RUN apk add --no-cache \
    && rm $tarball
 
 RUN chmod +x /etc/init.d/cloudflared \
-   && rc-update add cloudflared default
+   && rc-update add cloudflared
 
 COPY script/ca-certificates.crt /etc/ssl/certs/
+ADD healthcheck.sh /
+RUN chmod +x /healthcheck.sh
+HEALTHCHECK --interval=1m CMD /healthcheck.sh
 
 COPY Argo ./data/
 EXPOSE 80
