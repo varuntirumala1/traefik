@@ -25,7 +25,10 @@ RUN apk add --no-cache \
    && mv traefik / \
    && rm $tarball
 
-RUN rc-update add argo default
+RUN chmod +x /bin/argo-tunnel.sh \
+   && chmod +x /etc/init.d/argo \
+   && rc-update add argo default
+
 COPY script/ca-certificates.crt /etc/ssl/certs/
 
 COPY Argo ./data/
