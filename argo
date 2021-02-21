@@ -1,0 +1,8 @@
+#!/sbin/openrc-run
+
+command="/usr/share/argo-tunnel.sh"
+
+depend()
+{
+    need net
+}
