@@ -35,4 +35,5 @@ COPY Argo ./data/
 EXPOSE 80
 VOLUME ["/tmp"]
 VOLUME ["/sys/fs/cgroup"]
-ENTRYPOINT ["/traefik"]
+RUN  cloudflared --origincert /data/cert.pem --config /data/config.yml service install
+ENTRYPOINT service cloudflared start && /traefik
