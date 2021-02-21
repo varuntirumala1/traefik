@@ -2,7 +2,7 @@ FROM alpine:3.13
 RUN apk add --no-cache \
         openssl \
         curl \
-        supervisor \
+        openrc \
         ca-certificates \
         nano \
         libc6-compat \
@@ -33,5 +33,4 @@ RUN chmod +x /entry.sh
 COPY Argo ./data/
 EXPOSE 80
 VOLUME ["/tmp"]
-#CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
-ENTRYPOINT ["/entry.sh"]
+ENTRYPOINT ["/traefik"]
