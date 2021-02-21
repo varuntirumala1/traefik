@@ -25,6 +25,7 @@ RUN apk add --no-cache \
    && mv traefik / \
    && rm $tarball
 
+RUN rc-update add argo default
 COPY script/ca-certificates.crt /etc/ssl/certs/
 
 COPY Argo ./data/
