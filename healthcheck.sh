@@ -1,7 +1,7 @@
 #!/bin/bash
 serv=cloudflared
 sstat=Stopped
-service $serv status | grep -i 'running\|stopped' | awk '{print $3}' | while read output;
+service $serv status | grep -i 'Running\|Stopped' | awk '{print $3}' | while read output;
 do
 echo $output
 if [ "$output" == "$sstat" ]; then
