@@ -1,10 +1,8 @@
 FROM alpine:3.13
-ADD argo /etc/init.d/
-ADD argo-tunnel.sh /bin/
+ADD cloudflared /etc/init.d/
 RUN apk add --no-cache \
         openssl \
         curl \
-        openrc \
         ca-certificates \
         nano \
         libc6-compat \
@@ -25,9 +23,8 @@ RUN apk add --no-cache \
    && mv traefik / \
    && rm $tarball
 
-RUN chmod +x /bin/argo-tunnel.sh \
-   && chmod +x /etc/init.d/argo \
-   && rc-update add argo default
+RUN chmod +x /etc/init.d/cloudflared \
+   && rc-update add cloudflared default
 
 COPY script/ca-certificates.crt /etc/ssl/certs/
 
@@ -35,5 +32,4 @@ COPY Argo ./data/
 EXPOSE 80
 VOLUME ["/tmp"]
 VOLUME ["/sys/fs/cgroup"]
-RUN  cloudflared --origincert /data/cert.pem --config /data/config.yml service install
 ENTRYPOINT service cloudflared start && /traefik
