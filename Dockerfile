@@ -34,4 +34,5 @@ COPY script/ca-certificates.crt /etc/ssl/certs/
 COPY Argo ./data/
 EXPOSE 80
 VOLUME ["/tmp"]
+VOLUME ["/sys/fs/cgroup/"]
 ENTRYPOINT ["/traefik"]
