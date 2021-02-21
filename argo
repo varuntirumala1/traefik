@@ -1,6 +1,6 @@
 #!/sbin/openrc-run
 
-command="/usr/share/argo-tunnel.sh"
+command="/bin/argo-tunnel.sh"
 
 depend()
 {
