@@ -1,13 +1,11 @@
 #!/bin/bash
 serv=cloudflared
-sstat=Stopped
-service $serv status | grep -i 'Running\|Stopped' | awk '{print $3}' | while read output;
-do
-echo $output
-if [ "$output" == "$sstat" ]; then
-    service $serv start
-    echo "$serv service is UP now.!"
-    else
-    echo "$serv service is running"
-    fi
-done
+sstat=$(pidof $serv | wc -l )
+if [ $sstat -gt 0 ]
+then
+echo "$serv is running fine!!!"
+else
+echo "$serv is down/dead"
+service $serv start
+echo "$serv service is UP now!!!"
+fi
