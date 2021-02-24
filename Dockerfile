@@ -1,4 +1,4 @@
-FROM alpine:3.13
+FROM alpine:latest
 ADD cloudflared /etc/init.d/
 RUN apk add --no-cache \
         openssl \
