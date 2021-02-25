@@ -20,4 +20,4 @@ EXPOSE 80
 
 VOLUME ["/tmp"]
 
-ENTRYPOINT ["/init"]
+ENTRYPOINT ["/init","/traefik"]
