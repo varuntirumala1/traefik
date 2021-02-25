@@ -12,9 +12,7 @@ RUN  curl -s https://api.github.com/repos/traefik/traefik/releases/latest \
    && rm $tarball
 
 COPY script/ca-certificates.crt /etc/ssl/certs/
-ADD healthcheck.sh /
-RUN chmod +x /healthcheck.sh
-HEALTHCHECK --interval=1m CMD /healthcheck.sh
+RUN chmod +x /etc/services.d/cloudflared/run
 
 EXPOSE 80
 
