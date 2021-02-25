@@ -13,8 +13,7 @@ RUN cd /tmp \
    && rm -rf /tmp/*
 
 COPY script/ca-certificates.crt /etc/ssl/certs/
-RUN chmod +x /etc/services.d/cloudflared/run \
-&& chmod +x /etc/services.d/traefik/run
+RUN chmod +x /etc/services.d/cloudflared/run
 
 EXPOSE 80
 
